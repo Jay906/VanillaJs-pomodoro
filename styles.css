@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: block;
+  width: 80%;
+  height: 55vh;
+  margin: auto;
+  text-align: center;
+  background: #ff6c6c;
+  color: #f4f4f4;
+  padding: 1rem;
+}
+
+main.pmdr {
+  color: #f4f4f4;
+}
+
+main.rest {
+  background: #47ad33;
+}
+
+main button:hover,
+main button:focus {
+  background: #f4f4f4;
+  color: #333;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #f4f4f4;
+  outline: none;
+  color: #f4f4f4;
+  padding: 14px 16px;
+  transition: all 0.4s;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ffe4e4;
+  height: 10vh;
+}
+
+.timer {
+  display: flex;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+
+.main-header .buttons {
+  height: 10vh;
+}
+
+.buttons .btn {
+  margin-right: 1rem;
+}
+
+/* form section starts */
+
+form {
+  display: grid;
+  grid-template-columns: 15% 69% 15%;
+  grid-gap: 0.5%;
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
+form input,
+form button {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  background: #f4f4f4;
+  transition: all 0.3s;
+}
+
+form input:focus {
+  background: #fff;
+}
+
+form button {
+  background: #47ad33;
+  color: #f4f4f4;
+  outline: none;
+  border: none;
+}
+
+form button:focus {
+  border: 1px solid #333;
+}
+
+/* tasks section starts */
+
+.tasks {
+  display: block;
+  margin: 1rem auto;
+}
+
+.task-titles,
+.task {
+  display: grid;
+  grid-template-columns: 15% 69% 15%;
+  grid-gap: 1%;
+  text-align: center;
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
+.task {
+  border: 1px solid #333;
+  align-items: center;
+  position: relative;
+  padding: 0.75rem 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.task-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.options {
+  position: absolute;
+  bottom: 80%;
+  right: 0;
+  z-index: 1;
+  background: #fff;
+  transform: scale(0, 0);
+  transform-origin: left bottom;
+  transition: all 0.2s;
+}
+
+.show-options {
+  transform: scale(1, 1);
+}
+
+.options p {
+  padding: 0.4rem;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+.task button {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+.task button:active,
+.task button:focus {
+  border-radius: 50%;
+  background: #ccc;
+}
+
+@media screen and (max-width: 767px) {
+  main,
+  form,
+  .tasks {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .task-titles,
+  .task {
+    width: 100%;
+  }
+
+  form {
+    display: block;
+  }
+
+  form input,
+  form button {
+    margin: 0.5rem auto;
+    width: 100%;
+  }
+}

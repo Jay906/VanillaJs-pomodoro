@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://use.fontawesome.com/53b21a7337.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Jelaleddin Atalykov" />
+    <meta
+      name="description"
+      content="Pomodoro timer to boost your productivity"
+    />
+    <meta
+      name="keywords"
+      content="Pomodoro, Pomodoro timer, Pomodoro tracker, productivity"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Pomodoro Timer</title>
+  </head>
+  <body>
+    <main>
+      <section class="main-header">
+        <div class="icons">
+          <button class="btn">settings</button>
+          <button class="btn">list</button>
+        </div>
+        <div class="sequences">
+          <button class="btn">next</button>
+        </div>
+      </section>
+      <section class="timer">
+        <span id="minutes">25</span>:
+        <span id="seconds">00</span>
+      </section>
+      <section class="buttons">
+        <button class="start btn" id="start">Start</button>
+        <button class="stop btn" id="stop">Stop</button>
+        <button class="reset btn" id="reset">Reset</button>
+      </section>
+    </main>
+    <form id="form">
+      <input
+        type="text"
+        id="title"
+        class="title"
+        placeholder="Title"
+        autocomplete="off"
+      />
+      <input
+        autocomplete="off"
+        type="text"
+        id="description"
+        class="description"
+        placeholder="Brief description"
+      />
+      <button id="submit" type="submit" class="submit">Create</button>
+    </form>
+    <section id="tasks" class="tasks">
+      <div class="task-titles">
+        <h4>Title</h4>
+        <h4>Description</h4>
+        <h4></h4>
+      </div>
+    </section>
+    <script src="./main.js"></script>
+    <noscript>
+      Your browser does not support JS. Please, check it and try again.
+    </noscript>
+  </body>
+</html>
