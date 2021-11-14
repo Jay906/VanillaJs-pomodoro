@@ -4,6 +4,69 @@
   margin: 0;
 }
 
+#box-wrapper {
+  display: none;
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  color: #f4f4f4;
+  align-items: center;
+}
+
+#box-wrapper.show {
+  display: flex;
+}
+
+#box {
+  padding: 1rem;
+  width: 80%;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+#x {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+}
+
+#x:focus {
+  border: 1px solid #fff;
+}
+
+#box .show {
+  display: block;
+}
+
+#box form {
+  display: none;
+}
+
+#settings-form input,
+#settings-button {
+  display: block;
+  padding: 0.75rem;
+  width: 95%;
+  margin: 1rem auto;
+}
+
+#settings-button {
+  background: #47ad33;
+  margin-top: 2rem;
+  border: none;
+}
+
+#settings-button:focus {
+  border: 1px solid white;
+}
+
 main {
   display: block;
   width: 80%;
@@ -66,7 +129,7 @@ main button:focus {
 
 /* form section starts */
 
-form {
+#task-form {
   display: grid;
   grid-template-columns: 15% 69% 15%;
   grid-gap: 0.5%;
@@ -74,26 +137,26 @@ form {
   margin: 0.5rem auto;
 }
 
-form input,
-form button {
+#task-form input,
+#task-form button {
   padding: 0.75rem;
   border: 1px solid #ccc;
   background: #f4f4f4;
   transition: all 0.3s;
 }
 
-form input:focus {
+#task-form input:focus {
   background: #fff;
 }
 
-form button {
+#task-form button {
   background: #47ad33;
   color: #f4f4f4;
   outline: none;
   border: none;
 }
 
-form button:focus {
+#task-form button:focus {
   border: 1px solid #333;
 }
 
@@ -121,6 +184,20 @@ form button:focus {
   padding: 0.75rem 0;
   border-radius: 3px;
   cursor: pointer;
+}
+
+section.listed {
+  position: fixed;
+  bottom: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 5px 5px 3rem #000;
+  color: #f4f4f4;
+  padding: 1rem;
+  font-size: 1.3em;
 }
 
 .task-buttons {
@@ -159,6 +236,7 @@ form button:focus {
   justify-content: center;
   align-items: center;
   height: 1.4rem;
+  color: inherit;
   width: 1.4rem;
 }
 

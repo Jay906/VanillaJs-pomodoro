@@ -1,59 +1,65 @@
-let minutes = 1;
-let seconds = 0;
-let mode = "pmdr";
-let interval;
-
 const main = document.getElementsByTagName("main")[0];
 const minutesContainer = document.getElementById("minutes");
 const secondsContainer = document.getElementById("seconds");
 const tasks = document.getElementById("tasks");
-const form = document.getElementById("form");
+const form = document.getElementById("task-form");
 const title = document.getElementById("title");
 const description = document.getElementById("description");
 const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
+const settings = document.getElementById("settings");
+const list = document.getElementById("list");
+const box = document.getElementById("box-wrapper");
+const settingsForm = document.getElementById("settings-form");
+const work = document.getElementById("work");
+const rest = document.getElementById("rest");
+const listDiv = document.getElementById("list-div");
+const next = document.getElementById("next");
 
-const startTimer = () => {
-  clearInterval(interval);
-  interval = setInterval(startPomodoro, 1000);
-};
+let workTime = Number(work.value) || 25;
+let restTime = Number(rest.value) || 5;
+let minutes = 0;
+let seconds = 0;
+let mode = "pmdr";
+let listCount = 0;
+let interval;
 
 const stopTimer = () => {
   clearInterval(interval);
 };
 
+const startTimer = () => {
+  stopTimer();
+  interval = setInterval(startPomodoro, 1000);
+};
+
 const resetTimer = () => {
   stopTimer();
-  minutes = 25;
+  if (mode === "pmdr") {
+    minutes = workTime;
+  } else {
+    minutes = restTime;
+  }
   seconds = 0;
-  minutesContainer.textContent = "25";
-  secondsContainer.textContent = "00";
+  minutesContainer.textContent = minutes < 10 ? `0${minutes}` : minutes;
+  secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
 };
 
 function startPomodoro() {
   if (minutes === 0 && seconds === 0) {
+    listCount++;
     if (mode === "pmdr") {
-      mode = "rest";
-      main.classList.add(mode);
-      minutes = 5;
-      seconds = 0;
-      minutesContainer.textContent = "05";
+      minutes = workTime;
     } else {
-      mode = "pmdr";
-      main.classList.add(mode);
-      minutes = 25;
-      seconds = 0;
-      minutesContainer.textContent = minutes;
+      minutes = restTime;
     }
   }
-
   if (seconds === 0) {
     minutes--;
     seconds = 60;
   }
   seconds--;
-
   secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
   minutesContainer.textContent = minutes < 10 ? `0${minutes}` : minutes;
 }
@@ -100,12 +106,11 @@ const edit = (e) => {
   const desc = e.parentElement.parentElement.previousElementSibling;
   const title_ = desc.previousElementSibling;
   const parent = desc.parentElement;
-  console.log(title_.textContent, desc.textContent);
   const descValue = desc.textContent;
   const titleValue = title_.textContent;
   title.value = titleValue;
   description.value = descValue;
-  console.log(parent);
+  title.focus();
   tasks.removeChild(parent);
 };
 
@@ -114,7 +119,40 @@ const remove = (e) => {
   tasks.removeChild(parent);
 };
 
+const seeList = () => {
+  console.log("I am here");
+};
+
+const seeSettings = () => {
+  box.classList.add("show");
+  settingsForm.classList.add("show");
+  window.addEventListener("click", (e) => {
+    if (e.target.id === "box-wrapper" || e.target.id === "x") {
+      box.classList.remove("show");
+      settingsForm.classList.remove("show");
+    }
+  });
+};
+
+const saveSettings = (e) => {
+  e.preventDefault();
+  if (!work.value || !rest.value) {
+    return;
+  }
+  workTime = Number(work.value);
+  restTime = Number(rest.value);
+  minutes = workTime;
+  seconds = 0;
+  minutesContainer.textContent = minutes < 10 ? `0${workTime}` : workTime;
+  secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
+  box.classList.remove("show");
+  settingsForm.classList.remove("show");
+};
+
 start.addEventListener("click", startTimer);
 stop.addEventListener("click", stopTimer);
 reset.addEventListener("click", resetTimer);
 form.addEventListener("submit", submitTask);
+list.addEventListener("click", seeList);
+settings.addEventListener("click", seeSettings);
+settingsForm.addEventListener("submit", saveSettings);

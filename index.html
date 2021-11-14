@@ -18,11 +18,34 @@
     <title>Pomodoro Timer</title>
   </head>
   <body>
+    <div id="box-wrapper">
+      <div id="box">
+        <form id="settings-form">
+          <label for="work">Work Time:</label>
+          <input
+            type="number"
+            placeholder="How much you would like to work?"
+            id="work"
+            required
+          />
+          <label for="rest">Rest Time</label>
+          <input
+            type="number"
+            placeholder="How much you would like to rest?"
+            id="rest"
+            required
+          />
+          <button class="btn" id="settings-button" type="submit">Save</button>
+          <button class="btn" id="x">X</button>
+        </form>
+        <div class="list" id="list-div"></div>
+      </div>
+    </div>
     <main>
       <section class="main-header">
         <div class="icons">
           <button class="btn" id="settings">Settings</button>
-          <button class="btn" id="lists">List</button>
+          <button class="btn" id="list">List</button>
         </div>
         <div class="sequences">
           <button class="btn" id="next">Next</button>
@@ -38,7 +61,7 @@
         <button class="reset btn" id="reset">Reset</button>
       </section>
     </main>
-    <form id="form">
+    <form id="task-form">
       <input
         type="text"
         id="title"
