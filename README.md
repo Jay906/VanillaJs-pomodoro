@@ -12,11 +12,6 @@
   2. Set break time
   3. Set how much time you are planning to spend
 
-- Lists let you:
-
-  1. How many work and break sessions you finished
-  2. How many work and break sessions are left
-
 - Next let you jump to the next session!
 
 [Link to the website](https://www.google.com/)

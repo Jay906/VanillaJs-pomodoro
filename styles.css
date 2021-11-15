@@ -73,9 +73,13 @@ main {
   height: 55vh;
   margin: auto;
   text-align: center;
-  background: #ff6c6c;
   color: #f4f4f4;
   padding: 1rem;
+  background: #ff6c6c;
+}
+
+.rest {
+  background: #47ad33;
 }
 
 main.pmdr {

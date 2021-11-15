@@ -47,8 +47,12 @@ function startPomodoro() {
   if (minutes === 0 && seconds === 0) {
     if (mode === "pmdr") {
       minutes = workTime;
+      mode = "rest";
+      main.classList.add("rest");
     } else {
       minutes = restTime;
+      mode = "pmdr";
+      main.classList.remove("rest");
     }
   }
   if (seconds === 0) {
@@ -135,10 +139,21 @@ const saveSettings = (e) => {
   restTime = Number(rest.value);
   minutes = workTime;
   seconds = 0;
+  stopTimer();
   minutesContainer.textContent = minutes < 10 ? `0${workTime}` : workTime;
   secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
   box.classList.remove("show");
   settingsForm.classList.remove("show");
+};
+
+const nextSession = () => {
+  mode = mode === "pmdr" ? "rest" : "pmdr";
+  if (mode === "rest") {
+    main.classList.add("rest");
+  } else {
+    main.classList.remove("rest");
+  }
+  resetTimer();
 };
 
 start.addEventListener("click", startTimer);
@@ -147,3 +162,4 @@ reset.addEventListener("click", resetTimer);
 form.addEventListener("submit", submitTask);
 settings.addEventListener("click", seeSettings);
 settingsForm.addEventListener("submit", saveSettings);
+next.addEventListener("click", nextSession);
