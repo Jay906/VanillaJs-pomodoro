@@ -263,12 +263,17 @@ section.listed {
     width: 100%;
   }
 
-  form {
-    display: block;
+  #box {
+    width: 95%;
   }
 
-  form input,
-  form button {
+  #task-form {
+    display: block;
+    width: 100%;
+  }
+
+  #task-form input,
+  #task-form button {
     margin: 0.5rem auto;
     width: 100%;
   }

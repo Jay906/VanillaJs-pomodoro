@@ -17,10 +17,13 @@ const next = document.getElementById("next");
 
 let workTime = Number(work.value) || 25;
 let restTime = Number(rest.value) || 5;
-let minutes = 0;
-let seconds = 0;
 let mode = "pmdr";
+let minutes = mode == "pmdr" ? workTime : restTime;
+let seconds = 0;
 let interval;
+
+minutesContainer.textContent = minutes < 10 ? `0${minutes}` : minutes;
+secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
 
 const stopTimer = () => {
   clearInterval(interval);
