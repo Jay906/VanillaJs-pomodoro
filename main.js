@@ -9,12 +9,10 @@ const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
 const settings = document.getElementById("settings");
-const list = document.getElementById("list");
 const box = document.getElementById("box-wrapper");
 const settingsForm = document.getElementById("settings-form");
 const work = document.getElementById("work");
 const rest = document.getElementById("rest");
-const listDiv = document.getElementById("list-div");
 const next = document.getElementById("next");
 
 let workTime = Number(work.value) || 25;
@@ -22,7 +20,6 @@ let restTime = Number(rest.value) || 5;
 let minutes = 0;
 let seconds = 0;
 let mode = "pmdr";
-let listCount = 0;
 let interval;
 
 const stopTimer = () => {
@@ -48,7 +45,6 @@ const resetTimer = () => {
 
 function startPomodoro() {
   if (minutes === 0 && seconds === 0) {
-    listCount++;
     if (mode === "pmdr") {
       minutes = workTime;
     } else {
@@ -119,10 +115,6 @@ const remove = (e) => {
   tasks.removeChild(parent);
 };
 
-const seeList = () => {
-  console.log("I am here");
-};
-
 const seeSettings = () => {
   box.classList.add("show");
   settingsForm.classList.add("show");
@@ -153,6 +145,5 @@ start.addEventListener("click", startTimer);
 stop.addEventListener("click", stopTimer);
 reset.addEventListener("click", resetTimer);
 form.addEventListener("submit", submitTask);
-list.addEventListener("click", seeList);
 settings.addEventListener("click", seeSettings);
 settingsForm.addEventListener("submit", saveSettings);
