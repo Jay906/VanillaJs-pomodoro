@@ -82,6 +82,13 @@ main {
   background: #47ad33;
 }
 
+#mode {
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  justify-content: center;
+}
+
 main.pmdr {
   color: #f4f4f4;
 }
@@ -117,7 +124,7 @@ main button:focus {
 
 .timer {
   display: flex;
-  height: 30vh;
+  height: 20vh;
   justify-content: center;
   align-items: center;
   font-size: 4rem;

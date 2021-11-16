@@ -14,6 +14,7 @@ const settingsForm = document.getElementById("settings-form");
 const work = document.getElementById("work");
 const rest = document.getElementById("rest");
 const next = document.getElementById("next");
+const modeContainer = document.getElementById("mode");
 
 let workTime = Number(work.value) || 25;
 let restTime = Number(rest.value) || 5;
@@ -24,6 +25,7 @@ let interval;
 
 minutesContainer.textContent = minutes < 10 ? `0${minutes}` : minutes;
 secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
+modeContainer.textContent = mode === "pmdr" ? "Work Time" : "Rest Time";
 
 const stopTimer = () => {
   clearInterval(interval);
@@ -58,6 +60,7 @@ const resetTimer = () => {
   seconds = 0;
   minutesContainer.textContent = minutes < 10 ? `0${minutes}` : minutes;
   secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
+  modeContainer.textContent = mode === "pmdr" ? "Work Time" : "Rest Time";
 };
 
 function startPomodoro() {
@@ -79,6 +82,7 @@ function startPomodoro() {
   seconds--;
   secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
   minutesContainer.textContent = minutes < 10 ? `0${minutes}` : minutes;
+  modeContainer.textContent = mode === "pmdr" ? "Work Time" : "Rest Time";
 }
 
 const submitTask = (e) => {
@@ -160,6 +164,7 @@ const saveSettings = (e) => {
     stopTimer();
     minutesContainer.textContent = minutes < 10 ? `0${workTime}` : workTime;
     secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
+    modeContainer.textContent = mode === "pmdr" ? "Work Time" : "Rest Time";
     box.classList.remove("show");
     settingsForm.classList.remove("show");
   }
