@@ -29,6 +29,20 @@ const stopTimer = () => {
   clearInterval(interval);
 };
 
+const settingsValidation = (workTime, restTime) => {
+  if (workTime <= 0 || restTime <= 0) {
+    console.error("Only positive numbers!");
+    return false;
+  }
+
+  if (/D/.test(workTime.toString()) || /D/.test(restTime.toString())) {
+    console.error("Only numbers!");
+    return false;
+  }
+
+  return true;
+};
+
 const startTimer = () => {
   stopTimer();
   interval = setInterval(startPomodoro, 1000);
@@ -138,15 +152,17 @@ const saveSettings = (e) => {
   if (!work.value || !rest.value) {
     return;
   }
-  workTime = Number(work.value);
-  restTime = Number(rest.value);
-  minutes = workTime;
-  seconds = 0;
-  stopTimer();
-  minutesContainer.textContent = minutes < 10 ? `0${workTime}` : workTime;
-  secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
-  box.classList.remove("show");
-  settingsForm.classList.remove("show");
+  if (settingsValidation(work.value, rest.value)) {
+    workTime = Number(work.value);
+    restTime = Number(rest.value);
+    minutes = workTime;
+    seconds = 0;
+    stopTimer();
+    minutesContainer.textContent = minutes < 10 ? `0${workTime}` : workTime;
+    secondsContainer.textContent = seconds < 10 ? `0${seconds}` : seconds;
+    box.classList.remove("show");
+    settingsForm.classList.remove("show");
+  }
 };
 
 const nextSession = () => {
